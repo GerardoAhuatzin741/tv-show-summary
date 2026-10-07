@@ -220,8 +220,32 @@ def data_quality(records):
     }
 
 
+def build_summary(records, source_url, records_downloaded, records_skipped):
+    """Combine the aggregations into one dict ready to write."""
+    return {
+        "source_url": source_url,
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "records_downloaded": records_downloaded,
+        "records_processed": len(records),
+        "records_skipped": records_skipped,
+        "shows_per_genre": shows_per_genre(records),
+        "average_rating_by_language": average_rating_by_language(records),
+        "shows_per_decade": shows_per_decade(records),
+        "top_rated_shows": top_rated_shows(records),
+        "data_quality": data_quality(records),
+    }
+
+
+def write_summary(summary, path):
+    """Write the summary to a JSON file."""
+    path.write_text(
+        json.dumps(summary, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
 def main():
-    """Download the shows and report how many usable records arrived."""
+    """Download, summarize and save the shows, exiting cleanly on failure."""
     print(f"Downloading shows from {SOURCE_URL} ...")
     try:
         raw_records = fetch_records(SOURCE_URL)
@@ -229,7 +253,16 @@ def main():
         sys.exit(f"Download failed: {err}")
 
     records, skipped = clean_records(raw_records)
-    print(f"Downloaded {len(raw_records)} entries, {len(records)} usable, {skipped} skipped.")
+    if not records:
+        sys.exit("Download succeeded but contained no usable show records.")
+
+    summary = build_summary(records, SOURCE_URL, len(raw_records), skipped)
+    try:
+        write_summary(summary, OUTPUT)
+    except OSError as err:
+        sys.exit(f"Could not write {OUTPUT}: {err.strerror}")
+
+    print(f"Processed {len(records)} shows ({skipped} skipped). Summary written to {OUTPUT}.")
 
 
 if __name__ == "__main__":
