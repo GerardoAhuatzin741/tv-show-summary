@@ -1,0 +1,99 @@
+{
+  "source_url": "https://api.tvmaze.com/shows?page=0",
+  "generated_at": "2026-10-08T01:28:12+00:00",
+  "records_downloaded": 240,
+  "records_processed": 240,
+  "records_skipped": 0,
+  "shows_per_genre": {
+    "Drama": 154,
+    "Comedy": 66,
+    "Crime": 57,
+    "Action": 55,
+    "Thriller": 41,
+    "Science-Fiction": 39,
+    "Romance": 32,
+    "Adventure": 23,
+    "Family": 21,
+    "Horror": 21,
+    "Supernatural": 18,
+    "Mystery": 15,
+    "Fantasy": 13,
+    "Legal": 6,
+    "Medical": 6,
+    "Anime": 4,
+    "History": 4,
+    "War": 4,
+    "Music": 3,
+    "Western": 3,
+    "Espionage": 2,
+    "Sports": 2
+  },
+  "average_rating_by_language": {
+    "English": {
+      "average_rating": 7.58,
+      "rated_shows": 232,
+      "unrated_shows": 4
+    },
+    "Japanese": {
+      "average_rating": 7.88,
+      "rated_shows": 4,
+      "unrated_shows": 0
+    }
+  },
+  "shows_per_decade": {
+    "1980s": 2,
+    "1990s": 8,
+    "2000s": 51,
+    "2010s": 179
+  },
+  "top_rated_shows": [
+    {
+      "name": "Breaking Bad",
+      "rating": 9.2
+    },
+    {
+      "name": "Firefly",
+      "rating": 9.0
+    },
+    {
+      "name": "Game of Thrones",
+      "rating": 8.9
+    },
+    {
+      "name": "The Wire",
+      "rating": 8.9
+    },
+    {
+      "name": "Death Note",
+      "rating": 8.8
+    },
+    {
+      "name": "Person of Interest",
+      "rating": 8.8
+    },
+    {
+      "name": "Stargate Atlantis",
+      "rating": 8.8
+    },
+    {
+      "name": "Stargate SG·1",
+      "rating": 8.8
+    },
+    {
+      "name": "Battlestar Galactica",
+      "rating": 8.7
+    },
+    {
+      "name": "House",
+      "rating": 8.7
+    }
+  ],
+  "data_quality": {
+    "no_genres": 5,
+    "no_rating": 4,
+    "no_language": 0,
+    "no_valid_premiere_date": 0,
+    "web_channel_only": 11,
+    "no_network_or_web_channel": 0
+  }
+}
